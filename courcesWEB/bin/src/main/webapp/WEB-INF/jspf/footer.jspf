@@ -1,0 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<!-- Footer -->
+<footer>
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<p class="navbar-text all-center hb-all-center">© сделал Сергей Ахметшин 2018</p>
+	</nav>
+</footer>

@@ -1,0 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="resource" />
+<!-- Footer -->
+<footer>
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<p class="navbar-text all-center hb-all-center">© <fmt:message key="footer"/> </p>
+		<div style="margin-left: 95%"><a href="/profile/ru"><img src="http://www.iconsearch.ru/uploads/icons/finalflags/16x16/russia-flag.png"></a> <a href="/profile/gb"><img
+			src="https://image.flaticon.com/icons/svg/940/940156.svg" width="16" height="16"></a></div>
+	</nav>
+</footer>
