@@ -91,6 +91,7 @@
 						<div class="col-lg-4 col-lg-offset-4">
 							<c:if test="${not sessionScope.courseList.contains(resultCourse)}">
 								<form method="post" action="/courses/${resultCourse.courseId}?command=register">
+								<input type="hidden" name="uid" value="${uid}">
 									<button type="submit" class="btn btn-success cb-all-center course-button" name="id" value="${resultCourse.courseId}">
 										<fmt:message key="button.register" />
 									</button>
@@ -98,6 +99,7 @@
 							</c:if>
 							<c:if test="${sessionScope.courseList.contains(resultCourse)}">
 								<form method="post" action="/courses/${resultCourse.courseId}?command=unregister">
+								<input type="hidden" name="uid" value="${uid}">
 									<button type="submit" class="btn btn-warning cb-all-center course-button" name="id" value="${resultCourse.courseId}">
 										<fmt:message key="button.unregister" />
 									</button>

@@ -79,6 +79,7 @@
 										</c:if></td>
 									<td><a role="button" class="btn btn-default" href="/admin/courses/add?command=change&courseId=${course.courseId}"><fmt:message key="table.change"/></a></td>
 									<td><form method="post" action="/admin/courses/add?command=delete&courseId=${course.courseId}">
+									<input type="hidden" name="uid" value="${uid}">
 											<button role="button" type="submit" class="btn btn-default"><fmt:message key="table.dell"/></button>
 										</form></td>
 								</tr>

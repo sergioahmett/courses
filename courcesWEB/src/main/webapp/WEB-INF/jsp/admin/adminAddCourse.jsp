@@ -16,6 +16,7 @@
 			<div class="row">
 				<div class="col-lg-10 col-lg-offset-1 bgcolor tableWrapper">
 					<form action="/admin/courses/add?command=${not empty course?'change&courseId=':'create'}${not empty course?course.id:''}" method="post">
+					<input type="hidden" name="uid" value="${uid}">
 						<div class="form-group">
 							<label><fmt:message key="course.name"/></label> <textarea class="form-control" id="title" name="courseName" rows="3"><c:out value="${course.title}" /></textarea>
 						</div>

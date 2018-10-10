@@ -58,4 +58,5 @@ public class CodeHandler {
     public static final int RAITING_ADDED= 46;
     public static final int COURS_NOT_END_YET= 47;
     public static final int ID_NOT_VALID= 48;
+    public static final int DOUBBLE_POST= 49;
 }

@@ -76,9 +76,12 @@
 				<version>9.2.11.v20150529</version>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version>
+				<configuration>
+					<outputDirectory>C:\apache-tomcat-9.0.6-windows-x64\apache-tomcat-9.0.6\webapps\ROOT\</outputDirectory>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>

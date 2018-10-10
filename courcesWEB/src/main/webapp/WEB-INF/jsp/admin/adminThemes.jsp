@@ -46,6 +46,7 @@
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<form method="post" action="/admin/themes?command=create">
+						<input type="hidden" name="uid" value="${uid}">
 							<div class="modal-header">
 								<button class="close" type="button" data-dismiss="modal">×</button>
 								<h4 class="modal-title"><fmt:message key="add.theme.data"/></h4>
@@ -87,12 +88,14 @@
 									<td><c:out value="${theme.description}" /></td>
 									<td><button class="btn btn-default" type="button" data-toggle="modal" data-target="#changeTheme${theme.id}"><fmt:message key="table.change"/></button></td>
 									<td><form method="post" action="/admin/themes?command=delete&themeId=${theme.id}">
+									<input type="hidden" name="uid" value="${uid}">
 											<button role="button" type="submit" class="btn btn-default"><fmt:message key="table.dell"/></button>
 										</form>
 										<div id="changeTheme${theme.id}" class="modal fade">
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<form method="post" action="/admin/themes?command=change&themeId=${theme.id}">
+													<input type="hidden" name="uid" value="${uid}">
 														<div class="modal-header">
 															<button class="close" type="button" data-dismiss="modal">×</button>
 															<h4 class="modal-title"><fmt:message key="table.addData"/></h4>

@@ -66,6 +66,7 @@
 									<td><c:out value="${user.name}" /> <c:out value="${user.surname}" /></td>
 									<c:if test="${user.block}">
 										<td><form method="post" action="/admin/users/${user.id}?command=unblock">
+										<input type="hidden" name="uid" value="${uid}">
 												<button type="submit" class="btn btn-success">
 													<fmt:message key="table.unblock" />
 												</button>
@@ -73,6 +74,7 @@
 									</c:if>
 									<c:if test="${not user.block}">
 										<td><form method="post" action="/admin/users/${user.id}?command=block">
+										<input type="hidden" name="uid" value="${uid}">
 												<button type="submit" class="btn btn-danger">
 													<fmt:message key="table.block" />
 												</button>
@@ -87,6 +89,7 @@
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<form method="post" action="/admin/users/${user.id}?command=setTeacher">
+													<input type="hidden" name="uid" value="${uid}">
 														<div class="modal-header">
 															<button class="close" type="button" data-dismiss="modal">×</button>
 															<h4 class="modal-title">

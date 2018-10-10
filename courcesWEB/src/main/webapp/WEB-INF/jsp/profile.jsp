@@ -57,6 +57,7 @@
 		<div class="lines">
 			<div class="row bgcolor" style="border-radius: 40px; padding: 10px; padding-left: 30px;">
 				<form class="" method="post" action="http://localhost:8080/profile?command=pchange">
+				<input type="hidden" name="uid" value="${uid}">
 					<div class="col-lg-4">
 						<h2>
 							<fmt:message key="profile.chPass" />

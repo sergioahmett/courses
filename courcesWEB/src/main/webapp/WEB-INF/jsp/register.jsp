@@ -31,6 +31,7 @@
 		</c:if>
 		<div class="row main-form">
 			<form class="" method="post" action="http://localhost:8080/auth/register">
+			<input type="hidden" name="uid" value="${uid}">
 				<div class="form-group">
 					<label for="name" class="cols-sm-2 control-label"><fmt:message key="input.name" /></label>
 					<div class="cols-sm-10">

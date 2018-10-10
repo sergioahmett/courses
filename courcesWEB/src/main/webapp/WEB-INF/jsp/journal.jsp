@@ -64,6 +64,7 @@
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<form method="post" action="/journal/${courseId}?command=addRaiting&userId=${entry.key}">
+													<input type="hidden" name="uid" value="${uid}">
 														<div class="modal-header">
 															<button class="close" type="button" data-dismiss="modal">×</button>
 															<h4 class="modal-title"></h4>
@@ -101,6 +102,7 @@
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<form method="post" action="/journal/${courseId}?command=addFinal&userId=${entry.key}">
+													<input type="hidden" name="uid" value="${uid}">
 														<div class="modal-header">
 															<button class="close" type="button" data-dismiss="modal">×</button>
 															<h4 class="modal-title"></h4>
@@ -155,6 +157,7 @@
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<form method="post" action="/journal/${courseId}?command=addDay">
+									<input type="hidden" name="uid" value="${uid}">
 										<div class="modal-header">
 											<button class="close" type="button" data-dismiss="modal">×</button>
 											<h4 class="modal-title"></h4>

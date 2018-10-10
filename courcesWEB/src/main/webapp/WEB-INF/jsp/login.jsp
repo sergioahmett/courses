@@ -36,7 +36,7 @@
 		</c:if>
 		<div class="row main-form">
 			<form class="" method="post" action="http://localhost:8080/auth/login">
-
+				<input type="hidden" name="uid" value="${uid}">
 				<div class="form-group">
 					<div class="cols-sm-10">
 						<div class="input-group">

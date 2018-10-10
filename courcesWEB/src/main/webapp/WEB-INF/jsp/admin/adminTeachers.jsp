@@ -62,16 +62,19 @@
 									<td><c:out value="${user.name}" /> <c:out value="${user.surname}" /></td>
 									<c:if test="${user.block}">
 										<td><form method="post" action="/admin/teachers/${user.id}?command=unblock">
+										<input type="hidden" name="uid" value="${uid}">
 												<button type="submit" class="btn btn-success"><fmt:message key="table.unblock"/></button>
 											</form></td>
 									</c:if>
 									<c:if test="${not user.block}">
 										<td><form method="post" action="/admin/teachers/${user.id}?command=block">
+										<input type="hidden" name="uid" value="${uid}">
 												<button type="submit" class="btn btn-danger"><fmt:message key="table.block"/></button>
 											</form></td>
 
 									</c:if>
 									<td><form method="post" action="/admin/teachers/${user.id}?command=setStudent">
+									<input type="hidden" name="uid" value="${uid}">
 											<button type="submit" class="btn btn-default"><fmt:message key="table.toStudent"/></button>
 										</form></td>
 									<td><button class="btn btn-default" type="button" data-toggle="modal" data-target="#descChange"><fmt:message key="table.chDescription"/></button>
@@ -79,6 +82,7 @@
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<form method="post" action="/admin/teachers/${user.id}?command=changeDescription">
+													<input type="hidden" name="uid" value="${uid}">
 														<div class="modal-header">
 															<button class="close" type="button" data-dismiss="modal">×</button>
 															<h4 class="modal-title"><fmt:message key="table.addNewDescription"/></h4>
