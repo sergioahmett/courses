@@ -14,17 +14,17 @@ import org.apache.log4j.PropertyConfigurator;
 import com.epam.daolayer.dao.CourseDAO;
 import com.epam.daolayer.dao.CourseToUserDAO;
 import com.epam.daolayer.dao.JournalDAO;
-import com.epam.daolayer.dao.TheamDAO;
+import com.epam.daolayer.dao.ThemeDAO;
 import com.epam.daolayer.dao.UserDAO;
-import com.epam.daolayer.dbfasad.DBFasad;
-import com.epam.daolayer.dbfasad.DBFasad.Injector;
+import com.epam.daolayer.dbfacade.DBFacade;
+import com.epam.daolayer.dbfacade.DBFacade.Injector;
 import com.epam.interfaces.ProcessorIntarface;
 import com.epam.processor.AdminProcessor;
 import com.epam.processor.AuthProcessor;
 import com.epam.processor.CoursesProcessor;
 import com.epam.processor.JournalProcessor;
 import com.epam.processor.TeacherProcessor;
-import com.epam.processor.TheamsProcessor;
+import com.epam.processor.ThemesProcessor;
 import com.epam.processor.UserProcessor;
 
 /**
@@ -86,7 +86,7 @@ public class ContextListener implements ServletContextListener {
         processorList.add(AdminProcessor.getInstance());
         processorList.add(JournalProcessor.getInstance());
         processorList.add(CoursesProcessor.getInstance());
-        processorList.add(TheamsProcessor.getInstance());
+        processorList.add(ThemesProcessor.getInstance());
         processorList.add(AuthProcessor.getInstance());
         processorList.add(UserProcessor.getInstance());
         processorList.add(TeacherProcessor.getInstance());
@@ -98,9 +98,9 @@ public class ContextListener implements ServletContextListener {
     private void initFasade() {
         log.debug("Command fasade initialization started");
 
-        Injector inj = ((DBFasad)DBFasad.getInstance()).getInjector();
+        Injector inj = ((DBFacade)DBFacade.getInstance()).getInjector();
         inj.setCourseDAO(new CourseDAO());
-        inj.setTheamDAO(new TheamDAO());
+        inj.setThemeDAO(new ThemeDAO());
         inj.setCourseToUserDAO(new CourseToUserDAO());
         inj.setJournalDAO(new JournalDAO());
         inj.setUserDAO(new UserDAO());

@@ -13,7 +13,7 @@ import com.epam.annotation.MethodAnnotationController;
 import com.epam.annotation.Processor;
 import com.epam.annotation.RequestMapping;
 import com.epam.daolayer.daoentity.DatabaseUser;
-import com.epam.daolayer.dbfasad.DBFasad;
+import com.epam.daolayer.dbfacade.DBFacade;
 import com.epam.enums.HttpMethod;
 import com.epam.interfaces.DatabaseFasadInterface;
 import com.epam.interfaces.ProcessorIntarface;
@@ -28,7 +28,7 @@ import com.epam.utils.Validator;
  */
 @Processor(path = "/profile")
 public class UserProcessor implements ProcessorIntarface {
-    private DatabaseFasadInterface dbFacade = DBFasad.getInstance();
+    private DatabaseFasadInterface dbFacade = DBFacade.getInstance();
     private static UserProcessor instance;
     private static final Logger log = Logger.getLogger(UserProcessor.class);
     private MethodAnnotationController annController;

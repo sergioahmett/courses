@@ -12,7 +12,7 @@ import com.epam.annotation.HTTPMethod;
 import com.epam.annotation.MethodAnnotationController;
 import com.epam.annotation.Processor;
 import com.epam.annotation.RequestMapping;
-import com.epam.daolayer.dbfasad.DBFasad;
+import com.epam.daolayer.dbfacade.DBFacade;
 import com.epam.enums.HttpMethod;
 import com.epam.interfaces.DatabaseFasadInterface;
 import com.epam.interfaces.ProcessorIntarface;
@@ -26,7 +26,7 @@ import com.epam.utils.Journal;
  */
 @Processor(path = "/journal")
 public class JournalProcessor implements ProcessorIntarface {
-    private DatabaseFasadInterface dbFacade = DBFasad.getInstance();
+    private DatabaseFasadInterface dbFacade = DBFacade.getInstance();
     private static JournalProcessor instance;
     private static final Logger log = Logger.getLogger(JournalProcessor.class);
     private MethodAnnotationController annController;

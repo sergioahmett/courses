@@ -11,7 +11,8 @@ import com.epam.daolayer.daoentity.DatabaseCourse;
 import com.epam.daolayer.abstractdao.AbstractDAO;
 
 /**
- * The class that is responsible for working with the 'course' table in the database
+ * The class that is responsible for working with the 'course' table in the
+ * database
  * 
  * @author Sergey Ahmetshin
  *
@@ -22,7 +23,7 @@ public class CourseDAO extends AbstractDAO<DatabaseCourse> {
     private final static String SQL_UPDATE = "UPDATE cources.course SET title = ?, theme = ?, description = ?, duration = ?, maxStudentCount = ?, teacher = ?, startDate = ? WHERE (idCourse = ?)";
     private final static String SQL_FIND_BY_ID = "SELECT * FROM cources.course WHERE idCourse = ?";
     private final static String SQL_DELL_BY_ID = "DELETE FROM cources.course WHERE idCourse = ?";
-    private final static String SQL_FIND_BY_THEAM_ID = "SELECT * FROM cources.course WHERE theme = ?";
+    private final static String SQL_FIND_BY_THEME_ID = "SELECT * FROM cources.course WHERE theme = ?";
     private final static String SQL_FIND_BY_TEACHER_ID = "SELECT * FROM cources.course WHERE teacher = ?";
     private final static String SQL_FIND_BY_USER_ID = "SELECT idCourse, title, theme, description, duration, teacher, maxStudentCount, startDate FROM cources.course join cources.coursetouser on course.idCourse=coursetouser.courseId WHERE coursetouser.userId = ?";
 
@@ -31,12 +32,7 @@ public class CourseDAO extends AbstractDAO<DatabaseCourse> {
             ResultSet rs = st.executeQuery(SQL_FIND_ALL);
             List<DatabaseCourse> result = new LinkedList<>();
             while (rs.next()) {
-                DatabaseCourse cource = DatabaseCourse.newBuilder().setId(rs.getInt("idCourse"))
-                        .setTitle(rs.getString("title")).setTheme(rs.getInt("theme"))
-                        .setDescription(rs.getString("description")).setDuration(rs.getInt("duration"))
-                        .setStudentCount(rs.getInt("maxStudentCount")).setTeacher(rs.getInt("teacher"))
-                        .setStartDate(rs.getTimestamp("startDate")).build();
-                result.add(cource);
+                result.add(createCoureByResultSet(rs));
             }
             return result;
         } catch (SQLException ex) {
@@ -52,12 +48,7 @@ public class CourseDAO extends AbstractDAO<DatabaseCourse> {
             ResultSet rs = st.executeQuery();
             List<DatabaseCourse> result = new LinkedList<>();
             while (rs.next()) {
-                DatabaseCourse cource = DatabaseCourse.newBuilder().setId(rs.getInt("idCourse"))
-                        .setTitle(rs.getString("title")).setTheme(rs.getInt("theme"))
-                        .setDescription(rs.getString("description")).setDuration(rs.getInt("duration"))
-                        .setStudentCount(rs.getInt("maxStudentCount")).setTeacher(rs.getInt("teacher"))
-                        .setStartDate(rs.getTimestamp("startDate")).build();
-                result.add(cource);
+                result.add(createCoureByResultSet(rs));
             }
             return result;
         } catch (SQLException ex) {
@@ -73,12 +64,7 @@ public class CourseDAO extends AbstractDAO<DatabaseCourse> {
             ResultSet rs = st.executeQuery();
             List<DatabaseCourse> result = new LinkedList<>();
             while (rs.next()) {
-                DatabaseCourse cource = DatabaseCourse.newBuilder().setId(rs.getInt("idCourse"))
-                        .setTitle(rs.getString("title")).setTheme(rs.getInt("theme"))
-                        .setDescription(rs.getString("description")).setDuration(rs.getInt("duration"))
-                        .setStudentCount(rs.getInt("maxStudentCount")).setTeacher(rs.getInt("teacher"))
-                        .setStartDate(rs.getTimestamp("startDate")).build();
-                result.add(cource);
+                result.add(createCoureByResultSet(rs));
             }
             return result;
         } catch (SQLException ex) {
@@ -88,18 +74,13 @@ public class CourseDAO extends AbstractDAO<DatabaseCourse> {
         return null;
     }
 
-    public List<DatabaseCourse> findAllByTheamId(int id) {
-        try (PreparedStatement st = connection.prepareStatement(SQL_FIND_BY_THEAM_ID);) {
+    public List<DatabaseCourse> findAllByThemeId(int id) {
+        try (PreparedStatement st = connection.prepareStatement(SQL_FIND_BY_THEME_ID);) {
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             List<DatabaseCourse> result = new LinkedList<>();
             while (rs.next()) {
-                DatabaseCourse cource = DatabaseCourse.newBuilder().setId(rs.getInt("idCourse"))
-                        .setTitle(rs.getString("title")).setTheme(rs.getInt("theme"))
-                        .setDescription(rs.getString("description")).setDuration(rs.getInt("duration"))
-                        .setStudentCount(rs.getInt("maxStudentCount")).setTeacher(rs.getInt("teacher"))
-                        .setStartDate(rs.getTimestamp("startDate")).build();
-                result.add(cource);
+                result.add(createCoureByResultSet(rs));
             }
             return result;
         } catch (SQLException ex) {
@@ -114,12 +95,7 @@ public class CourseDAO extends AbstractDAO<DatabaseCourse> {
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.first()) {
-                DatabaseCourse cource = DatabaseCourse.newBuilder().setId(rs.getInt("idCourse"))
-                        .setTitle(rs.getString("title")).setTheme(rs.getInt("theme"))
-                        .setDescription(rs.getString("description")).setDuration(rs.getInt("duration"))
-                        .setStudentCount(rs.getInt("maxStudentCount")).setTeacher(rs.getInt("teacher"))
-                        .setStartDate(rs.getTimestamp("startDate")).build();
-                return cource;
+                return createCoureByResultSet(rs);
             } else {
                 return null;
             }
@@ -182,5 +158,12 @@ public class CourseDAO extends AbstractDAO<DatabaseCourse> {
             System.out.println("Error by creating statment!");
             return false;
         }
+    }
+
+    private DatabaseCourse createCoureByResultSet(ResultSet rs) throws SQLException {
+        return DatabaseCourse.newBuilder().setId(rs.getInt("idCourse")).setTitle(rs.getString("title"))
+                .setTheme(rs.getInt("theme")).setDescription(rs.getString("description"))
+                .setDuration(rs.getInt("duration")).setStudentCount(rs.getInt("maxStudentCount"))
+                .setTeacher(rs.getInt("teacher")).setStartDate(rs.getTimestamp("startDate")).build();
     }
 }

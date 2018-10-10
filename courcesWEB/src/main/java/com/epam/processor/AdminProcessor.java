@@ -19,8 +19,8 @@ import com.epam.annotation.MethodAnnotationController;
 import com.epam.annotation.Processor;
 import com.epam.annotation.RequestMapping;
 import com.epam.daolayer.daoentity.DatabaseCourse;
-import com.epam.daolayer.daoentity.DatabaseTheam;
-import com.epam.daolayer.dbfasad.DBFasad;
+import com.epam.daolayer.daoentity.DatabaseTheme;
+import com.epam.daolayer.dbfacade.DBFacade;
 import com.epam.enums.HttpMethod;
 import com.epam.interfaces.DatabaseFasadInterface;
 import com.epam.interfaces.ProcessorIntarface;
@@ -34,7 +34,7 @@ import com.epam.utils.CodeHandler;
  */
 @Processor(path = "/admin")
 public class AdminProcessor implements ProcessorIntarface {
-    private DatabaseFasadInterface dbFacade = DBFasad.getInstance();
+    private DatabaseFasadInterface dbFacade = DBFacade.getInstance();
     private static AdminProcessor instance;
     private static final Logger log = Logger.getLogger(AdminProcessor.class);
     private MethodAnnotationController annController;
@@ -113,12 +113,12 @@ public class AdminProcessor implements ProcessorIntarface {
     }
 
     @HTTPMethod(method = HttpMethod.GET)
-    @RequestMapping(path = "/theams")
-    public void getAllTheams(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(path = "/themes")
+    public void getAllThemes(HttpServletRequest request, HttpServletResponse response) {
         try {
             if (checkAdminSession(request)) {
-                request.setAttribute("theamsList", dbFacade.getAllTheams());
-                request.getRequestDispatcher("/WEB-INF/jsp/admin/adminTheams.jsp").forward(request, response);
+                request.setAttribute("themesList", dbFacade.getAllThemes());
+                request.getRequestDispatcher("/WEB-INF/jsp/admin/adminThemes.jsp").forward(request, response);
             } else {
                 response.sendRedirect("/");
             }
@@ -136,7 +136,7 @@ public class AdminProcessor implements ProcessorIntarface {
                 request.setAttribute("course",
                         dbFacade.getCourseById(Integer.parseInt(request.getParameter("courseId"))));
                 request.setAttribute("teachersList", dbFacade.getAllTeachers());
-                request.setAttribute("theamsList", dbFacade.getAllTheams());
+                request.setAttribute("themesList", dbFacade.getAllThemes());
                 request.getRequestDispatcher("/WEB-INF/jsp/admin/adminAddCourse.jsp").forward(request, response);
             } else {
                 response.sendRedirect("/");
@@ -153,7 +153,7 @@ public class AdminProcessor implements ProcessorIntarface {
         try {
             if (checkAdminSession(request)) {
                 request.setAttribute("teachersList", dbFacade.getAllTeachers());
-                request.setAttribute("theamsList", dbFacade.getAllTheams());
+                request.setAttribute("themesList", dbFacade.getAllThemes());
                 request.getRequestDispatcher("/WEB-INF/jsp/admin/adminAddCourse.jsp").forward(request, response);
             } else {
                 response.sendRedirect("/");
@@ -166,12 +166,12 @@ public class AdminProcessor implements ProcessorIntarface {
 
     @HTTPMethod(method = HttpMethod.POST)
     @RequestMapping(path = "/courses/add", requiredParam = { "command", "courseId", "duration", "maxStudent",
-            "courseName", "teacher", "description", "theam", "startDate" }, requiredParamVariable = "change")
+            "courseName", "teacher", "description", "theme", "startDate" }, requiredParamVariable = "change")
     public void changeCourse(HttpServletRequest request, HttpServletResponse response) {
         try {
             if (checkAdminSession(request)) {
                 DatabaseCourse course = getCourse(request.getParameter("courseId"), request.getParameter("courseName"),
-                        request.getParameter("theam"), request.getParameter("description"),
+                        request.getParameter("theme"), request.getParameter("description"),
                         request.getParameter("duration"), request.getParameter("maxStudent"),
                         request.getParameter("teacher"), request.getParameter("startDate"));
 
@@ -191,16 +191,16 @@ public class AdminProcessor implements ProcessorIntarface {
     }
 
     @HTTPMethod(method = HttpMethod.POST)
-    @RequestMapping(path = "/theams", requiredParam = { "command", "theamId", "title",
+    @RequestMapping(path = "/themes", requiredParam = { "command", "themeId", "title",
             "description" }, requiredParamVariable = "change")
-    public void changeTheam(HttpServletRequest request, HttpServletResponse response) {
+    public void changeTheme(HttpServletRequest request, HttpServletResponse response) {
         try {
             if (checkAdminSession(request)) {
-                System.out.println(request.getParameter("theamId"));
+                System.out.println(request.getParameter("themeId"));
                 request.setAttribute("msg",
-                        dbFacade.changeTheam(new DatabaseTheam(Integer.parseInt(request.getParameter("theamId")),
+                        dbFacade.changeTheme(new DatabaseTheme(Integer.parseInt(request.getParameter("themeId")),
                                 request.getParameter("title"), request.getParameter("description"))));
-                getAllTheams(request, response);
+                getAllThemes(request, response);
             } else {
                 response.sendRedirect("/");
             }
@@ -211,12 +211,12 @@ public class AdminProcessor implements ProcessorIntarface {
     }
 
     @HTTPMethod(method = HttpMethod.POST)
-    @RequestMapping(path = "/theams", requiredParam = { "command", "theamId" }, requiredParamVariable = "delete")
-    public void deleteTheam(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(path = "/themes", requiredParam = { "command", "themeId" }, requiredParamVariable = "delete")
+    public void deleteTheme(HttpServletRequest request, HttpServletResponse response) {
         try {
             if (checkAdminSession(request)) {
-                request.setAttribute("msg", dbFacade.deleteTheam(Integer.parseInt(request.getParameter("theamId"))));
-                getAllTheams(request, response);
+                request.setAttribute("msg", dbFacade.deleteTheme(Integer.parseInt(request.getParameter("themeId"))));
+                getAllThemes(request, response);
             } else {
                 response.sendRedirect("/");
             }
@@ -227,14 +227,14 @@ public class AdminProcessor implements ProcessorIntarface {
     }
 
     @HTTPMethod(method = HttpMethod.POST)
-    @RequestMapping(path = "/theams", requiredParam = { "command", "title",
+    @RequestMapping(path = "/themes", requiredParam = { "command", "title",
             "description" }, requiredParamVariable = "create")
-    public void createTheam(HttpServletRequest request, HttpServletResponse response) {
+    public void createTheme(HttpServletRequest request, HttpServletResponse response) {
         try {
             if (checkAdminSession(request)) {
-                request.setAttribute("msg", dbFacade.createTheam(
-                        new DatabaseTheam(0, request.getParameter("title"), request.getParameter("description"))));
-                getAllTheams(request, response);
+                request.setAttribute("msg", dbFacade.createTheme(
+                        new DatabaseTheme(0, request.getParameter("title"), request.getParameter("description"))));
+                getAllThemes(request, response);
             } else {
                 response.sendRedirect("/");
             }
@@ -262,12 +262,12 @@ public class AdminProcessor implements ProcessorIntarface {
 
     @HTTPMethod(method = HttpMethod.POST)
     @RequestMapping(path = "/courses/add", requiredParam = { "command", "duration", "maxStudent", "courseName",
-            "teacher", "description", "theam", "startDate" }, requiredParamVariable = "create")
+            "teacher", "description", "theme", "startDate" }, requiredParamVariable = "create")
     public void createCourse(HttpServletRequest request, HttpServletResponse response) {
         try {
             if (checkAdminSession(request)) {
                 DatabaseCourse course = getCourse("0", request.getParameter("courseName"),
-                        request.getParameter("theam"), request.getParameter("description"),
+                        request.getParameter("theme"), request.getParameter("description"),
                         request.getParameter("duration"), request.getParameter("maxStudent"),
                         request.getParameter("teacher"), request.getParameter("startDate"));
 
@@ -390,19 +390,19 @@ public class AdminProcessor implements ProcessorIntarface {
         return false;
     }
 
-    private DatabaseCourse getCourse(String courseId, String title, String theam, String description, String duration,
+    private DatabaseCourse getCourse(String courseId, String title, String theme, String description, String duration,
             String maxStudent, String teacher, String startDate) {
         try {
             System.out.println(startDate);
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             DatabaseCourse course = DatabaseCourse.newBuilder().setId(Integer.parseInt(courseId)).setTitle(title)
-                    .setTheme(Integer.parseInt(theam)).setDescription(description)
+                    .setTheme(Integer.parseInt(theme)).setDescription(description)
                     .setDuration(Integer.parseInt(duration)).setStudentCount(Integer.parseInt(maxStudent))
                     .setTeacher(Integer.parseInt(teacher))
                     .setStartDate(new Timestamp(formatter.parse(startDate).getTime())).build();
             return course;
         } catch (Exception e) {
-            log.error("Error in method. Parametrs: courseId = " + courseId + ", title" + title + ", theam" + theam
+            log.error("Error in method. Parametrs: courseId = " + courseId + ", title" + title + ", theme" + theme
                     + ", description" + description + ", duration" + duration + ", maxStudent" + maxStudent
                     + ", teacher" + teacher + ", startDate" + startDate, e);
             return null;

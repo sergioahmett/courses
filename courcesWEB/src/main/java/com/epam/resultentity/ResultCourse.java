@@ -7,14 +7,14 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 import com.epam.daolayer.daoentity.DatabaseCourse;
-import com.epam.daolayer.daoentity.DatabaseTheam;
+import com.epam.daolayer.daoentity.DatabaseTheme;
 import com.epam.daolayer.daoentity.DatabaseUser;
 import com.epam.interfaces.CourseInterface;
 import com.epam.utils.CourseHelper;
 
 /**
  * An entity that contains all the information about the course. Contains
- * courseId, courseTitle, theamId, theamTitle, regStudent, maxStudent,
+ * courseId, courseTitle, themeId, themeTitle, regStudent, maxStudent,
  * startDate, duration, teacheId, teacherFullName and coursedescription.
  * 
  * @author Sergey Ahmetshin
@@ -24,8 +24,8 @@ import com.epam.utils.CourseHelper;
 public class ResultCourse implements CourseInterface {
     private int courseId;
     private String courseTitle;
-    private int theamId;
-    private String theamTitle;
+    private int themeId;
+    private String themeTitle;
     private int regStudent;
     private int maxStudent;
     private Timestamp startDate;
@@ -37,7 +37,7 @@ public class ResultCourse implements CourseInterface {
     public ResultCourse() {
     }
 
-    public ResultCourse(DatabaseCourse dbCourse, DatabaseTheam dbTheam, DatabaseUser dbTeachere, int regStudent) {
+    public ResultCourse(DatabaseCourse dbCourse, DatabaseTheme dbTheme, DatabaseUser dbTeachere, int regStudent) {
         if (dbCourse != null) {
             courseId = dbCourse.getId();
             courseTitle = dbCourse.getTitle();
@@ -46,9 +46,9 @@ public class ResultCourse implements CourseInterface {
             duration = dbCourse.getDuration();
             setDescription(dbCourse.getDescription());
         }
-        if (dbTheam != null) {
-            theamId = dbTheam.getId();
-            theamTitle = dbTheam.getTitle();
+        if (dbTheme != null) {
+            themeId = dbTheme.getId();
+            themeTitle = dbTheme.getTitle();
         }
         this.regStudent = regStudent;
         if (dbTeachere != null) {
@@ -78,20 +78,20 @@ public class ResultCourse implements CourseInterface {
         this.courseTitle = courseTitle;
     }
 
-    public int getTheamId() {
-        return theamId;
+    public int getThemeId() {
+        return themeId;
     }
 
-    public void setTheamId(int theamId) {
-        this.theamId = theamId;
+    public void setThemeId(int themeId) {
+        this.themeId = themeId;
     }
 
-    public String getTheamTitle() {
-        return theamTitle;
+    public String getThemeTitle() {
+        return themeTitle;
     }
 
-    public void setTheamTitle(String theamTitle) {
-        this.theamTitle = theamTitle;
+    public void setThemeTitle(String themeTitle) {
+        this.themeTitle = themeTitle;
     }
 
     public int getRegStudent() {
@@ -167,8 +167,8 @@ public class ResultCourse implements CourseInterface {
         result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
         result = prime * result + teacheId;
         result = prime * result + ((teacherFullName == null) ? 0 : teacherFullName.hashCode());
-        result = prime * result + theamId;
-        result = prime * result + ((theamTitle == null) ? 0 : theamTitle.hashCode());
+        result = prime * result + themeId;
+        result = prime * result + ((themeTitle == null) ? 0 : themeTitle.hashCode());
         return result;
     }
 
@@ -209,20 +209,20 @@ public class ResultCourse implements CourseInterface {
                 return false;
         } else if (!teacherFullName.equals(other.teacherFullName))
             return false;
-        if (theamId != other.theamId)
+        if (themeId != other.themeId)
             return false;
-        if (theamTitle == null) {
-            if (other.theamTitle != null)
+        if (themeTitle == null) {
+            if (other.themeTitle != null)
                 return false;
-        } else if (!theamTitle.equals(other.theamTitle))
+        } else if (!themeTitle.equals(other.themeTitle))
             return false;
         return true;
     }
 
     @Override
     public String toString() {
-        return "ResultCourse [courseId=" + courseId + ", courseTitle=" + courseTitle + ", theamId=" + theamId
-                + ", theamTitle=" + theamTitle + ", regStudent=" + regStudent + ", maxStudent=" + maxStudent
+        return "ResultCourse [courseId=" + courseId + ", courseTitle=" + courseTitle + ", themeId=" + themeId
+                + ", themeTitle=" + themeTitle + ", regStudent=" + regStudent + ", maxStudent=" + maxStudent
                 + ", startDate=" + startDate + ", duration=" + duration + ", teacheId=" + teacheId
                 + ", teacherFullName=" + teacherFullName + ", description=" + description + "]";
     }

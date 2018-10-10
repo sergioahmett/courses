@@ -13,7 +13,7 @@ import com.epam.annotation.MethodAnnotationController;
 import com.epam.annotation.Processor;
 import com.epam.annotation.RequestMapping;
 import com.epam.daolayer.daoentity.DatabaseUser;
-import com.epam.daolayer.dbfasad.DBFasad;
+import com.epam.daolayer.dbfacade.DBFacade;
 import com.epam.enums.HttpMethod;
 import com.epam.interfaces.DatabaseFasadInterface;
 import com.epam.interfaces.ProcessorIntarface;
@@ -28,7 +28,7 @@ import com.epam.utils.Validator;
  */
 @Processor(path = "/auth")
 public class AuthProcessor implements ProcessorIntarface {
-    private DatabaseFasadInterface dbFacade = DBFasad.getInstance();
+    private DatabaseFasadInterface dbFacade = DBFacade.getInstance();
     private static AuthProcessor instance;
     private static final Logger log = Logger.getLogger(AuthProcessor.class);
     private MethodAnnotationController annController;
@@ -99,6 +99,7 @@ public class AuthProcessor implements ProcessorIntarface {
                     DatabaseUser tempUser = dbFacade.getUserByLoginOrMail(user.getLogin());
                     session.setAttribute("userId", tempUser.getId());
                     session.setAttribute("role", tempUser.getRole());
+                    session.setAttribute("courseList", dbFacade.getUserActualCourses(tempUser.getId()));
                     response.sendRedirect("/");
                 } else {
                     request.setAttribute("error", code);

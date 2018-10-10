@@ -28,7 +28,7 @@ public class CodeHandler {
     public static final int REGISTER_TO_COURSE_SUCCSESS = 16;
     public static final int UNREGISTER_TO_COURSE_SUCCSESS = 17;
     public static final int TEACHER_NOT_FOUND = 18;
-    public static final int THEAM_NOT_FOUND = 19;
+    public static final int THEME_NOT_FOUND = 19;
     public static final int WEAK_PASSWORD = 20;
     public static final int PASSWORD_NOT_MATCH = 21;
     public static final int PASSWORD_CHANGE = 22;
@@ -48,9 +48,9 @@ public class CodeHandler {
     public static final int COURSE_CHANGED= 36;
     public static final int COURSE_CREATED= 37;
     public static final int COURSE_DELETED= 38;
-    public static final int THEAM_CHANGED= 39;
-    public static final int THEAM_CREATED= 40;
-    public static final int THEAM_DELETED= 41;
+    public static final int THEME_CHANGED= 39;
+    public static final int THEME_CREATED= 40;
+    public static final int THEME_DELETED= 41;
     public static final int COURSE_NOT_ACTUAL= 42;
     public static final int JOURNAL_NOT_FOUND= 43;
     public static final int ACCESS_DENIED= 44;

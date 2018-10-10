@@ -99,7 +99,7 @@
 			</div>
 		</div>
 		<div class="bottomLines">
-			<c:if test="${not sessionScope.role eq 'Admin'}">
+			<c:if test="${not sessionScope.role.equals('Admin')}">
 				<div class="row col-lg-12 bgcolor tableWrapper">
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" href="#panel1"><fmt:message key="button.actual" /></a></li>
@@ -124,10 +124,10 @@
 									<c:forEach var="course" items="${user.actualCourseList}">
 										<tr>
 											<td><c:out value="${course.courseTitle}" /></td>
-											<td><c:if test="${empty course.theamTitle}">
+											<td><c:if test="${empty course.themeTitle}">
 													<fmt:message key="notheme" />
-												</c:if> <c:if test="${not empty course.theamTitle}">
-													<c:out value="${course.theamTitle}" />
+												</c:if> <c:if test="${not empty course.themeTitle}">
+													<c:out value="${course.themeTitle}" />
 												</c:if></td>
 											<td><c:out value="${course.duration}" /></td>
 											<td><c:out value="${course.regStudent}" /></td>
@@ -172,10 +172,10 @@
 									<c:forEach var="course" items="${user.currentCourseList}">
 										<tr>
 											<td><c:out value="${course.courseTitle}" /></td>
-											<td><c:if test="${empty course.theamTitle}">
+											<td><c:if test="${empty course.themeTitle}">
 													<fmt:message key="notheme" />
-												</c:if> <c:if test="${not empty course.theamTitle}">
-													<c:out value="${course.theamTitle}" />
+												</c:if> <c:if test="${not empty course.themeTitle}">
+													<c:out value="${course.themeTitle}" />
 												</c:if></td>
 											<td><c:out value="${course.duration}" /></td>
 											<td><c:out value="${course.regStudent}" /></td>
@@ -222,10 +222,10 @@
 									<c:forEach var="course" items="${user.archiveCourseList}">
 										<tr>
 											<td><c:out value="${course.courseTitle}" /></td>
-											<td><c:if test="${empty course.theamTitle}">
+											<td><c:if test="${empty course.themeTitle}">
 													<fmt:message key="notheme" />
-												</c:if> <c:if test="${not empty course.theamTitle}">
-													<c:out value="${course.theamTitle}" />
+												</c:if> <c:if test="${not empty course.themeTitle}">
+													<c:out value="${course.themeTitle}" />
 												</c:if></td>
 											<td><c:out value="${course.duration}" /></td>
 											<td><c:out value="${course.regStudent}" /></td>

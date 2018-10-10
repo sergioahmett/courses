@@ -20,14 +20,14 @@
 							<label><fmt:message key="course.name"/></label> <textarea class="form-control" id="title" name="courseName" rows="3"><c:out value="${course.title}" /></textarea>
 						</div>
 						<div class="form-group">
-							<label><fmt:message key="select.theme"/></label> <select class="form-control" id="theam" name="theam">
+							<label><fmt:message key="select.theme"/></label> <select class="form-control" id="theme" name="theme">
 								<option value="-1"><fmt:message key="theme.notSelected"/></option>
-								<c:forEach var="theam" items="${theamsList}">
-									<c:if test="${course.theme eq theam.id}">
-										<option selected="selected" value="${theam.id}"><c:out value="${theam.title}" /></option>
+								<c:forEach var="theme" items="${themesList}">
+									<c:if test="${course.theme eq theme.id}">
+										<option selected="selected" value="${theme.id}"><c:out value="${theme.title}" /></option>
 									</c:if>
-									<c:if test="${course.theme != theam.id}">
-										<option value="${theam.id}"><c:out value="${theam.title}" /></option>
+									<c:if test="${course.theme != theme.id}">
+										<option value="${theme.id}"><c:out value="${theme.title}" /></option>
 									</c:if>
 								</c:forEach>
 							</select>
@@ -59,7 +59,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label><fmt:message key="startDate"/></label> <input type="date" class="form-control" id="startDate" name="startDate" value="${course.getDate()}">
+							<label><fmt:message key="startDate"/></label> <input type="date" class="form-control" id="startDate" name="startDate" value="${course.getDate()}" required="required">
 						</div>
 						<c:if test="${not empty course}">
 							<div class="form-group">

@@ -7,7 +7,7 @@
     <uri>/WEB-INF/tld/AddTheamToHeader</uri>
     <tag>
         <name>addtheam</name>
-        <tag-class>com.epam.teglib.AddTheamToHeaderTag</tag-class>
+        <tag-class>com.epam.taglib.AddTheamToHeaderTag</tag-class>
         <body-content>empty</body-content>
         <info>Add theams to list from database</info>
         <attribute>

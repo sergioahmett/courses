@@ -34,7 +34,7 @@
 				<div class="col-lg-8 col-lg-offset-2 bgcolo">
 					<a role="button" class="btn btn-default cb-all-center" href="/admin/users"><fmt:message key="button.users"/></a><br> <a role="button"
 						class="btn btn-default cb-all-center" href="/admin/teachers"><fmt:message key="button.teachers"/></a><br> <a role="button" class="btn btn-default cb-all-center  active"
-						href="/admin/courses"><fmt:message key="button.courses"/></a><br> <a role="button" class="btn btn-default cb-all-center" href="/admin/theams"><fmt:message key="button.themes"/></a>
+						href="/admin/courses"><fmt:message key="button.courses"/></a><br> <a role="button" class="btn btn-default cb-all-center" href="/admin/themes"><fmt:message key="button.themes"/></a>
 				</div>
 			</div>
 		</div>
@@ -64,10 +64,10 @@
 								<tr>
 
 									<td><c:out value="${course.courseTitle}" /></td>
-									<td><c:if test="${empty course.theamTitle}">
+									<td><c:if test="${empty course.themeTitle}">
 											<fmt:message key="notheme" />
-										</c:if> <c:if test="${not empty course.theamTitle}">
-											<c:out value="${course.theamTitle}" />
+										</c:if> <c:if test="${not empty course.themeTitle}">
+											<c:out value="${course.themeTitle}" />
 										</c:if></td>
 									<td><c:out value="${course.duration}" /></td>
 									<td><c:out value="${course.regStudent}" /></td>

@@ -23,7 +23,7 @@ import com.epam.processor.*;
  * @author Sergey Ahmetshin
  *
  */
-@WebServlet(name = "headServlet", urlPatterns = { "/teachers/*", "/courses/*", "/profile/*", "/auth/*", "/theams/*",
+@WebServlet(name = "headServlet", urlPatterns = { "/teachers/*", "/courses/*", "/profile/*", "/auth/*", "/themes/*",
         "/admin/*", "/journal/*" })
 public class Controller extends HttpServlet {
     private static final Logger log = Logger.getLogger(Controller.class);

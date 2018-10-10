@@ -49,10 +49,10 @@
 					</p>
 					<p class="fs-25">
 						<fmt:message key="table.theme" />
-						:<em><c:if test="${resultCourse.theamId == 0}">
+						:<em><c:if test="${resultCourse.themeId == 0}">
 								<fmt:message key="notheme" />
-							</c:if> <c:if test="${resultCourse.theamId != 0}">
-								<a href="/theams/${resultCourse.theamId}"><c:out value="${resultCourse.theamTitle}" /></a>
+							</c:if> <c:if test="${resultCourse.themeId != 0}">
+								<a href="/themes/${resultCourse.themeId}"><c:out value="${resultCourse.themeTitle}" /></a>
 							</c:if> </em>
 					</p>
 					<p class="fs-25">

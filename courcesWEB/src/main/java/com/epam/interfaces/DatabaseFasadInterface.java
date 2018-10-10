@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.epam.daolayer.daoentity.DatabaseCourse;
-import com.epam.daolayer.daoentity.DatabaseTheam;
+import com.epam.daolayer.daoentity.DatabaseTheme;
 import com.epam.daolayer.daoentity.DatabaseUser;
 import com.epam.resultentity.ResultCourse;
 import com.epam.resultentity.ResultTeacher;
-import com.epam.resultentity.ResultTheam;
+import com.epam.resultentity.ResultTheme;
 import com.epam.resultentity.ResultUser;
 import com.epam.utils.Journal;
 
@@ -24,9 +24,9 @@ public interface DatabaseFasadInterface {
 
     DatabaseCourse getCourseById(int id);
 
-    List<DatabaseTheam> getAllTheams();
+    List<DatabaseTheme> getAllThemes();
 
-    Map<String, Integer> getTheamForHeader();
+    Map<String, Integer> getThemeForHeader();
 
     ResultTeacher getResultTeacherById(int id);
 
@@ -48,11 +48,11 @@ public interface DatabaseFasadInterface {
 
     List<ResultCourse> getUserActualCourses(int id);
 
-    ResultTheam getResultTheamById(int id);
+    ResultTheme getResultThemeById(int id);
 
     List<ResultCourse> getResultCourseList();
 
-    List<ResultTheam> getResultTheamList();
+    List<ResultTheme> getResultThemeList();
 
     int blockUser(int id);
 
@@ -74,11 +74,11 @@ public interface DatabaseFasadInterface {
 
     int deleteCourse(int parameter);
 
-    int changeTheam(DatabaseTheam databaseTheam);
+    int changeTheme(DatabaseTheme databaseTheme);
 
-    int createTheam(DatabaseTheam databaseTheam);
+    int createTheme(DatabaseTheme databaseTheme);
 
-    int deleteTheam(int parseInt);
+    int deleteTheme(int parseInt);
 
     boolean checkAccessToJournal(int userId, int courseId, String role);
 

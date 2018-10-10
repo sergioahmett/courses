@@ -37,10 +37,10 @@
 								<tr>
 									<td><c:out value="${course.courseTitle}" /></td>
 
-									<td><c:if test="${empty course.theamTitle}">
+									<td><c:if test="${empty course.themeTitle}">
 											<fmt:message key="notheme" />
-										</c:if> <c:if test="${not empty course.theamTitle}">
-											<c:out value="${course.theamTitle}" />
+										</c:if> <c:if test="${not empty course.themeTitle}">
+											<c:out value="${course.themeTitle}" />
 										</c:if></td>
 									<td><c:out value="${course.duration}" /></td>
 									<td><c:out value="${course.regStudent}" /></td>

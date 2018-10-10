@@ -55,7 +55,7 @@
 								<c:forEach var="entity" items="${entry.value}">
 									<td><c:out value="${entity}" /></td>
 								</c:forEach>
-								<td><c:out value="${entity.finalRaiting.get(entity.key)}" /></td>
+								<td><c:out value="${journal.finalRating[entry.key]}" /></td>
 								<c:if test="${sessionScope.role eq 'Teacher'}">
 									<td><button class="btn btn-default cb-all-center" type="button" data-toggle="modal" data-target="#addRaiting${entry.key}">
 											<fmt:message key="journal.setrating" />

@@ -1,36 +1,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="/WEB-INF/tld/AddTheamToHeader.tld" prefix="addtheam"%>
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="resource"/>
 <header>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid fb">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="http://localhost:8080/"><img src="/images/logo-dark.png"></a>
+				<a class="navbar-brand" href="/"><img src="/images/logo-dark.png"></a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown">Курсы<span class="caret"></span></a>
+					data-toggle="dropdown"><fmt:message key="header.coures"/><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="http://localhost:8080/courses">Полный список</a></li>
+						<li><a href="/courses"><fmt:message key="header.list"/></a></li>
 						<addtheam:addtheam theamListLength="5"/>
 					</ul></li>
-				<li><a href="http://localhost:8080/teachers" class="fb">Преподователи</a></li>
-				<li><a href="http://localhost:8080/about">О нас</a></li>
-				<li><a href="http://localhost:8080/contacts">Контакты</a></li>
+				<li><a href="/teachers" class="fb"><fmt:message key="header.teachers"/></a></li>
+				<li><a href="/theams"><fmt:message key="header.themes"/></a></li>
 				<c:if test="${sessionScope.role eq 'Admin'}">
-				<li><a href="http://localhost:8080/admin">Админ панель</a></li>
+				<li><a href="/admin"><fmt:message key="header.admin"/></a></li>
 				</c:if>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 			<c:if test="${empty sessionScope.userId}">
-				<li><a href="http://localhost:8080/auth/register"><span class="glyphicon glyphicon-user mr-5"></span>Регистрация</a></li>
-				<li><a href="http://localhost:8080/auth/login"><span
-						class="glyphicon glyphicon-log-in mr-5"></span>Войти</a></li>
+				<li><a href="/auth/register"><span class="glyphicon glyphicon-user mr-5"></span><fmt:message key="header.register"/></a></li>
+				<li><a href="/auth/login"><span
+						class="glyphicon glyphicon-log-in mr-5"></span><fmt:message key="header.login"/></a></li>
 			</c:if>
 			<c:if test="${not empty sessionScope.userId}">
-				<li><a href="http://localhost:8080/profile"><span class="glyphicon glyphicon-home mr-5"></span>Личный кабинет</a></li>
-				<li><a href="http://localhost:8080/auth/logout"><span
-						class="glyphicon glyphicon-log-out mr-5"></span>Выйти</a></li>
+				<li><a href="/profile"><span class="glyphicon glyphicon-home mr-5"></span><fmt:message key="header.profile"/></a></li>
+				<li><a href="/auth/logout"><span
+						class="glyphicon glyphicon-log-out mr-5"></span><fmt:message key="header.logout"/></a></li>
 			</c:if>
 			</ul>
 		</div>

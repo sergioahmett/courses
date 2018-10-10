@@ -20,7 +20,7 @@ import com.google.gson.Gson;
 public class Journal extends BaseEntity {
     private List<String> titleList = new LinkedList<>();
     private Map<Integer, List<String>> usersMap = new HashMap<>();;
-    private Map<Integer, Integer> finalRaiting = new HashMap<>();
+    private Map<Integer, Integer> finalRating = new HashMap<>();
 
     public void addStudents(List<DatabaseUser> studentsList) {
         studentsList.forEach(student -> {
@@ -45,7 +45,7 @@ public class Journal extends BaseEntity {
 
     public void addFinalRaitingToUser(int id, int raiting) {
         if (usersMap.containsKey(id)) {
-            finalRaiting.put(id, raiting);
+            finalRating.put(id, raiting);
         }
     }
 
@@ -87,11 +87,11 @@ public class Journal extends BaseEntity {
         return gson.fromJson(json, Journal.class);
     }
 
-    public Map<Integer, Integer> getFinalRaiting() {
-        return finalRaiting;
+    public Map<Integer, Integer> getFinalRating() {
+        return finalRating;
     }
 
-    public void setFinalRaiting(Map<Integer, Integer> finalRaiting) {
-        this.finalRaiting = finalRaiting;
+    public void setFinalRating(Map<Integer, Integer> finalRating) {
+        this.finalRating = finalRating;
     }
 }
