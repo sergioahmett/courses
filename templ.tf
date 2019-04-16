@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "eu-central-1"
+  region = "ap-northeast-1"
 }
 
 resource "aws_key_pair" "deployer" {
