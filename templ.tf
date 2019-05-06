@@ -12,7 +12,7 @@ resource "aws_instance" "test_VM" {
   }
 }
 
-variable "vm_name" { 
+variable "vm_name" {   
   description = "Name for VM to be created1"
   default = "GIT test"
 }
