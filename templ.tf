@@ -10,7 +10,7 @@ resource "aws_instance" "test_VM" {
   tags {
     Name = "${var.vm_name}"
   }
-}  
+}     
 
 variable "vm_name" {  
   description = "Name for VM to be created1"
