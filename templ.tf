@@ -1,6 +1,6 @@
 provider "aws" {
   region = "ap-northeast-1"
-}
+}  
   
 resource "aws_instance" "test_VM" {
   # Amazon Linux AMI 2017.03.1 (HVM)
