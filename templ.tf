@@ -1,7 +1,7 @@
 provider "aws" {
   region = "ap-northeast-1"
 }     
-  
+
 resource "aws_instance" "test_VM" {
   # Amazon Linux AMI 2017.03.1 (HVM)
   ami           = "ami-449f483b"
@@ -10,7 +10,7 @@ resource "aws_instance" "test_VM" {
   tags {
     Name = "${var.vm_name}"
   }
-}            
+}       
     
 variable "vm_name" {  
   description = "Name for VM to be created1"
