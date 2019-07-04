@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "test_VM" {
   # Amazon Linux AMI 2017.03.1 (HVM)
-  ami           = "ami-449f483b"
+  ami           = "ami-449f483b"   
   instance_type = "t2.micro"
 
   tags {
