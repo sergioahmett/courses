@@ -5,7 +5,7 @@ provider "azurerm"  {
 # Create a resource group if it doesn't exist
 resource "azurerm_resource_group" "myterraformgroup" {        
     name     = "${var.resourcename}${var.prefix}"
-    location = "West Europe"
+    location = "West Europe"     
     tags {
         environment = "${var.default_environment_tag}"    
     }
