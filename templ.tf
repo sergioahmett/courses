@@ -6,7 +6,7 @@ provider "azurerm"  {
 resource "azurerm_resource_group" "myterraformgroup" {          
     name     = "${var.resourcename}${var.prefix}"      
     location = "West Europe"
-    tags {    
+    tags = {    
         environment = "${var.default_environment_tag}"    
     }      
 }
