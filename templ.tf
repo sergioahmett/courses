@@ -16,7 +16,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
     address_space       = ["10.0.0.0/16"]
     location            = "West Europe"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
-    tags {
+    tags = {
         environment = "${var.default_environment_tag}"
     }
 }
@@ -33,7 +33,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
     location                     = "West Europe"
     resource_group_name          = "${azurerm_resource_group.myterraformgroup.name}"
     public_ip_address_allocation = "dynamic"
-    tags {
+    tags = {
         environment = "${var.default_environment_tag}"
     }
 }
@@ -42,7 +42,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myDemoNetworkSecurityGroup${var.prefix}"
     location            = "West Europe"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
-    tags {
+    tags = {
         environment = "${var.default_environment_tag}"
     }
 }
@@ -84,7 +84,7 @@ resource "azurerm_network_interface" "myterraformnic" {
         private_ip_address_allocation = "dynamic"
         public_ip_address_id          = "${azurerm_public_ip.myterraformpublicip.id}"
     }
-    tags {
+    tags = {
         environment = "${var.default_environment_tag}"
     }
 }
@@ -103,7 +103,7 @@ resource "azurerm_storage_account" "mystorageaccount" {
     location                    = "West Europe"
     account_tier                = "Standard"
     account_replication_type    = "LRS"
-    tags {
+    tags = {
         environment = "${var.default_environment_tag}"
     }
 }
@@ -156,7 +156,7 @@ EOF
         enabled = "true"
         storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
     }
-    tags {
+    tags = {
         Name        = "${var.vm_name}" 
         environment = "${var.default_environment_tag}"
     }
