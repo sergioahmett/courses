@@ -172,10 +172,6 @@ variable "default_environment_tag" {
   default = "web"
   description = "Default environment tag for the resources of stack"
 }
-variable "test123" {
-  default = "web"
-  description = "Default environment tag for the resources of stack"
-}
 output "vm_ip" {
   value = "${azurerm_public_ip.myterraformpublicip.ip_address}"
 }
