@@ -157,7 +157,7 @@ EOF
         storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
     }
     tags = {
-        Name        = "${var.vm_name}" 
+        Name        = "test_vm" 
         environment = "${var.default_environment_tag}"
     }
 }
@@ -167,10 +167,6 @@ variable "resourcename" {
 }
 variable "prefix" {
     default = "web"
-}
-variable "vm_name" {
-  default = "webVmM"
-  description = "Name for VM to be created"
 }
 variable "default_environment_tag" {
   default = "web"
